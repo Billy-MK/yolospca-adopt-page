@@ -1,75 +1,57 @@
-var species = "";
-var breed = "";
-var age = "";
-var sex = "";
+var filters = [
+    {
+        "fieldName" : "animalOrgID",
+        "operation" : "equals",
+        "criteria" : "1742"
+    },
+    {
+        "fieldName" : "animalStatus",
+        "operation" : "equals",
+        "criteria" : "available"
+    }
+]
 
-function formSubmit() { 
+function submitForm() {
     event.preventDefault();
-    console.log(document.getElementById("species").value)
-    console.log(document.getElementById("age").value)
-    console.log(document.getElementById("sex").value)
-    console.log(document.getElementById("breed").value)
-}
-
-function selectSpecies(selectedSpecies) {
-    species = {
-        "fieldName" : "animalSpecies",
-        "operation" : "equals",
-        "criteria" : selectedSpecies
+    if (document.getElementById("species").value) {
+        filters.push({
+            "fieldName" : "animalSpecies",
+            "operation" : "equals",
+            "criteria" : document.getElementById("species").value
+        })
     };
-    filters.push(species)
-    search();
-}
-
-function selectAge(selectedAge) {
-    age = {
-        "fieldName" : "animalAge",
-        "operation" : "equals",
-        "criteria" : selectedAge
+    
+    if (document.getElementById("sex").value) {
+        filters.push({
+            "fieldName" : "animalSex",
+            "operation" : "equals",
+            "criteria" : document.getElementById("sex").value
+        })
     };
-    filters.push(age)
-    search();
-}
-
-function selectBreed(selectedBreed) {
-    breed = {
-        "fieldName" : "animalBreed",
-        "operation" : "equals",
-        "criteria" : selectedBreed
+    
+    if (document.getElementById("age").value) {
+        filters.push({
+            "fieldName" : "animalGeneralAge",
+            "operation" : "equals",
+            "criteria" : document.getElementById("age").value
+        })
     };
-    filters.push(breed)
-    search();
-}
-
-function selectSex() {
-    sex = {
-        "fieldName" : "animalSex",
-        "operation" : "equals",
-        "criteria" : "male"
+    
+    if (document.getElementById("breed").value) {
+        filters.push({
+            "fieldName" : "animalBreed",
+            "operation" : "equals",
+            "criteria" : document.getElementById("breed").value
+        })
     };
-    filters.push(sex)
-    search();
+    console.log(filters)
 }
-
 
 function search() {
-    var filters = [
-        {
-            "fieldName" : "animalOrgID",
-            "operation" : "equals",
-            "criteria" : "1742"
-        },
-        {
-            "fieldName" : "animalStatus",
-            "operation" : "equals",
-            "criteria" : "available"
-        }
-        ]
-
     fetch('https://api.rescuegroups.org/http/v2.json', {
     method: 'POST',
     body: JSON.stringify({
-        "apikey" : '',
+        "apikey" : 'bos596JH',
             "objectType" : "animals",
             "objectAction" : "publicSearch",
             "search" : {
