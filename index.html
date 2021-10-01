@@ -10,9 +10,34 @@
 <body>
     <div class="container">
         <div class="controls">
-            <button onClick="selectSex()">
-                Set male
-            </button>
+            <form>
+                <label for="species">Species</label>
+                <select name="species">
+                    <option value="cat">Cat</option>
+                    <option value="dog">Dog</option>
+                </select>
+                <label for="sex">Sex</label>
+                <select name="sex">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+                <label for="age">Age</label>
+                <select name="age">
+                    <option value="baby">Baby</option>
+                    <option value="young">Young</option>
+                    <option value="adult">Adult</option>
+                    <option value="senior">Senior</option>
+                </select>
+                <label for="breed">Breed</label>
+                <select name="breed">
+                    <option value="dsh">Domestic Shorthair</option>
+                    <option value="dmh">Domestic Mediumhair</option>
+                    <option value="dlh">Domestic Longhair</option>
+                    <option value="tabby">Tabby</option>
+                </select>
+                <br>
+                <input type="submit" value="Submit">
+            </form>
             <p id="results"></p>
         </div>
         <div class="animals">
