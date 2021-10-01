@@ -8,9 +8,19 @@ var data = {
             "resultSort" : "animalID",
             "resultOrder" : "asc",
             "calcFoundRows" : "Yes",
-            "filters" : {
+            "filters" : [
+                {
+                    "fieldName" : "animalOrgID",
+                    "operation" : "equals",
+                    "criteria" : "1742"
                 },
-            "fields": ["animalID","animalAgeString", "animalGeneralAge", "animalBreed","animalDescriptionPlain","animalLocationCitystate","animalName","animalPrimaryBreed","animalSpecies","animalThumbnailUrl","animalUrl","animalPictures"]
+                {
+                "fieldName" : "animalStatus",
+                "operation" : "equals",
+                "criteria" : "available"
+                }
+            ],
+            "fields": ["animalID","animalAgeString", "animalGeneralAge", "animalBreed","animalDescriptionPlain","animalName","animalPrimaryBreed","animalSpecies","animalThumbnailUrl","animalUrl","animalPictures"]
         }
 }
 
@@ -19,4 +29,9 @@ fetch('https://api.rescuegroups.org/http/v2.json', {
     body: JSON.stringify(data)
 })
   .then(response => response.json())
-  .then(data => console.log(data));
+  .then(data => {
+      for (const key in data.data) {
+          console.log(data.data[key])
+      }
+  });
+
