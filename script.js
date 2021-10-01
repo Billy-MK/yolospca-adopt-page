@@ -3,6 +3,14 @@ var breed = "";
 var age = "";
 var sex = "";
 
+function formSubmit() { 
+    event.preventDefault();
+    console.log(document.getElementById("species").value)
+    console.log(document.getElementById("age").value)
+    console.log(document.getElementById("sex").value)
+    console.log(document.getElementById("breed").value)
+}
+
 function selectSpecies(selectedSpecies) {
     species = {
         "fieldName" : "animalSpecies",
