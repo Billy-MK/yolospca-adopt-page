@@ -12,19 +12,19 @@
         <div class="controls">
             <form id="form">
                 <label for="species">Species</label>
-                <select name="species" id="species">
+                <select name="species" id="species" onChange="submitForm()">
                     <option value="">Any Species</option>
                     <option value="cat">Cat</option>
                     <option value="dog">Dog</option>
                 </select>
                 <label for="sex">Sex</label>
-                <select name="sex" id="sex">
+                <select name="sex" id="sex" onChange="submitForm()">
                     <option value="">Any Sex</option>
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                 </select>
                 <label for="age">Age</label>
-                <select name="age" id="age">
+                <select name="age" id="age" onChange="submitForm()">
                     <option value="">Any Age</option>
                     <option value="baby">Baby</option>
                     <option value="young">Young</option>
@@ -32,18 +32,18 @@
                     <option value="senior">Senior</option>
                 </select>
                 <label for="breed">Breed</label>
-                <select name="breed" id="breed">
+                <select name="breed" id="breed" onChange="submitForm()">
                     <option value="">Any Breed</option>
-                    <option value="dsh">Domestic Shorthair</option>
-                    <option value="dmh">Domestic Mediumhair</option>
-                    <option value="dlh">Domestic Longhair</option>
+                    <option value="short">Domestic Short Hair</option>
+                    <option value="medium">Domestic Medium Hair</option>
+                    <option value="long">Domestic Long Hair</option>
                     <option value="tabby">Tabby</option>
                 </select>
                 <br>
                 <input type="submit" value="Submit" onClick="submitForm()">
             </form>
-            <button onClick="search()">Search</button>
             <p id="results"></p>
+            <p id="filters"></p>
         </div>
         <div class="animals">
 

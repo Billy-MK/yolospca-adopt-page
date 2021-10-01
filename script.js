@@ -40,11 +40,12 @@ function submitForm() {
     if (document.getElementById("breed").value) {
         filters.push({
             "fieldName" : "animalBreed",
-            "operation" : "equals",
+            "operation" : "contains",
             "criteria" : document.getElementById("breed").value
         })
     };
     console.log(filters)
+    search();
 }
 
 function search() {
@@ -71,6 +72,19 @@ function search() {
           console.log(data.data[key])
       }
       document.getElementById("results").textContent = JSON.stringify(data.data)
+      document.getElementById("filters").textContent = JSON.stringify(filters)
+      filters = [
+        {
+            "fieldName" : "animalOrgID",
+            "operation" : "equals",
+            "criteria" : "1742"
+        },
+        {
+            "fieldName" : "animalStatus",
+            "operation" : "equals",
+            "criteria" : "available"
+        }
+    ]
   });
 }
 
