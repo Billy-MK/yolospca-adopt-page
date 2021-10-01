@@ -1,59 +1,87 @@
-var species = "all";
-var breed = "all";
-var age = "all";
-var sex = "all";
-
-
-var filters = [{
-    "fieldName" : "animalOrgID",
-    "operation" : "equals",
-    "criteria" : "1742"
-},
-{
-    "fieldName" : "animalStatus",
-    "operation" : "equals",
-    "criteria" : "available"
-}]
+var species = "";
+var breed = "";
+var age = "";
+var sex = "";
 
 function selectSpecies(selectedSpecies) {
-    species = selectedSpecies;
+    species = {
+        "fieldName" : "animalSpecies",
+        "operation" : "equals",
+        "criteria" : selectedSpecies
+    };
+    filters.push(species)
+    search();
 }
 
 function selectAge(selectedAge) {
-    age = selectedAge;
+    age = {
+        "fieldName" : "animalAge",
+        "operation" : "equals",
+        "criteria" : selectedAge
+    };
+    filters.push(age)
+    search();
 }
 
-function selectBreed(selectBreed) {
-    breed = selectBreed;
+function selectBreed(selectedBreed) {
+    breed = {
+        "fieldName" : "animalBreed",
+        "operation" : "equals",
+        "criteria" : selectedBreed
+    };
+    filters.push(breed)
+    search();
 }
 
-function selectSex(selectSex) {
-    sex = selectSex;
+function selectSex() {
+    sex = {
+        "fieldName" : "animalSex",
+        "operation" : "equals",
+        "criteria" : "male"
+    };
+    filters.push(sex)
+    search();
 }
 
-var data = {
-    "apikey" : 'bos596JH',
-        "objectType" : "animals",
-        "objectAction" : "publicSearch",
-        "search" : {
-            "resultStart" : 0,
-            "resultLimit" : 15,
-            "resultSort" : "animalID",
-            "resultOrder" : "asc",
-            "calcFoundRows" : "Yes",
-            "filters" : filters,
-            "fields": ["animalID","animalAgeString", "animalGeneralAge", "animalBreed","animalDescriptionPlain","animalName","animalPrimaryBreed","animalSpecies","animalThumbnailUrl","animalUrl","animalPictures"]
+
+function search() {
+    var filters = [
+        {
+            "fieldName" : "animalOrgID",
+            "operation" : "equals",
+            "criteria" : "1742"
+        },
+        {
+            "fieldName" : "animalStatus",
+            "operation" : "equals",
+            "criteria" : "available"
         }
-}
+        ]
 
-fetch('https://api.rescuegroups.org/http/v2.json', {
+    fetch('https://api.rescuegroups.org/http/v2.json', {
     method: 'POST',
-    body: JSON.stringify(data)
+    body: JSON.stringify({
+        "apikey" : '',
+            "objectType" : "animals",
+            "objectAction" : "publicSearch",
+            "search" : {
+                "resultStart" : 0,
+                "resultLimit" : 15,
+                "resultSort" : "animalID",
+                "resultOrder" : "asc",
+                "calcFoundRows" : "Yes",
+                "filters" : filters,
+                "fields": ["animalName", "animalSex"]
+            }
+    })
 })
   .then(response => response.json())
   .then(data => {
       for (const key in data.data) {
           console.log(data.data[key])
       }
+      document.getElementById("results").textContent = JSON.stringify(data.data)
   });
+}
 
+search();
