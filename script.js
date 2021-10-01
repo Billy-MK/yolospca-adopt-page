@@ -1,25 +1,47 @@
+var species = "all";
+var breed = "all";
+var age = "all";
+var sex = "all";
+
+
+var filters = [{
+    "fieldName" : "animalOrgID",
+    "operation" : "equals",
+    "criteria" : "1742"
+},
+{
+    "fieldName" : "animalStatus",
+    "operation" : "equals",
+    "criteria" : "available"
+}]
+
+function selectSpecies(selectedSpecies) {
+    species = selectedSpecies;
+}
+
+function selectAge(selectedAge) {
+    age = selectedAge;
+}
+
+function selectBreed(selectBreed) {
+    breed = selectBreed;
+}
+
+function selectSex(selectSex) {
+    sex = selectSex;
+}
+
 var data = {
     "apikey" : 'bos596JH',
         "objectType" : "animals",
         "objectAction" : "publicSearch",
         "search" : {
             "resultStart" : 0,
-            "resultLimit" : 8,
+            "resultLimit" : 15,
             "resultSort" : "animalID",
             "resultOrder" : "asc",
             "calcFoundRows" : "Yes",
-            "filters" : [
-                {
-                    "fieldName" : "animalOrgID",
-                    "operation" : "equals",
-                    "criteria" : "1742"
-                },
-                {
-                "fieldName" : "animalStatus",
-                "operation" : "equals",
-                "criteria" : "available"
-                }
-            ],
+            "filters" : filters,
             "fields": ["animalID","animalAgeString", "animalGeneralAge", "animalBreed","animalDescriptionPlain","animalName","animalPrimaryBreed","animalSpecies","animalThumbnailUrl","animalUrl","animalPictures"]
         }
 }
