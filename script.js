@@ -12,6 +12,9 @@ var filters = [
     }
 ]
 
+// Gets the breed select element, defined as a global variable to work across multiple functions
+var breedSelect = document.getElementById("breed");
+
 // These are all the cat breeds options, where "name" shows in the dropdown and "value" is the search term sent to the rescuegroups API.
 var catBreedOptions = [
     {name: "Domestic Short Hair", value: "short"},
@@ -35,9 +38,11 @@ function submitForm() {
     if (species) {
         // This conditional shows/hides dog or cat breeds in the breed selection dropdown.
         if (species === "cat") {
+            clearBreeds();
             catBreeds();
         }
         else if (species === "dog") {
+            clearBreeds();
             dogBreeds();
         }
         filters.push({
@@ -80,37 +85,29 @@ function submitForm() {
     search();
 }
 
-function catBreeds(){
-    // Gets the Select element for the breed drop-down
-    var breedSelect = document.getElementById("breed");
-    // Empties the options from the Select element
+// Clears all breeds from dropdown except "any breed"
+function clearBreeds() {
     breedSelect.options.length = 1;
-    // Iterates over the options defined in the array above to add cat breeds
+}
+
+function catBreeds(){
+    // Iterates over the options defined in the cat breeds array to add cat breeds
     for(let i=0; i<catBreedOptions.length; i++) {
         breedSelect.options[breedSelect.options.length] = new Option(catBreedOptions[i].name, catBreedOptions[i].value, false, false);
     }
 }
 
+// Iterates over the options defined in the dog breeds array to add dog breeds
 function dogBreeds(){
-    // Gets the Select element for the breed drop-down
-    var breedSelect = document.getElementById("breed");
-    // Empties the options from the Select element
-    breedSelect.options.length = 1;
-    // Iterates over the options defined in the array above to add dog breeds
     for(let i=0; i<dogBreedOptions.length; i++) {
         breedSelect.options[breedSelect.options.length] = new Option(dogBreedOptions[i].name, dogBreedOptions[i].value, false, false);
     }
 }
 
 function allBreeds(){
-    var breedSelect = document.getElementById("breed");
-    breedSelect.options.length = 1;
-    for(let i=0; i<catBreedOptions.length; i++) {
-        breedSelect.options[breedSelect.options.length] = new Option(catBreedOptions[i].name, catBreedOptions[i].value, false, false);
-    }
-    for(let i=0; i<dogBreedOptions.length; i++) {
-        breedSelect.options[breedSelect.options.length] = new Option(dogBreedOptions[i].name, dogBreedOptions[i].value, false, false);
-    }
+    clearBreeds();
+    catBreeds();
+    dogBreeds();
 }
 
 // Search function for rescuegroups API based on filters defined by form input
