@@ -13,12 +13,21 @@ var filters = [
 
 function submitForm() {
     event.preventDefault();
-    if (document.getElementById("species").value) {
+    let species = document.getElementById("species").value
+    if (species) {
+        if (species === "cat") {
+            catBreeds();
+        }
+        if (species === "dog") {
+            dogBreeds();
+        }
         filters.push({
             "fieldName" : "animalSpecies",
             "operation" : "equals",
             "criteria" : document.getElementById("species").value
         })
+    } else {
+        allBreeds();
     };
     
     if (document.getElementById("sex").value) {
@@ -76,6 +85,17 @@ function dogBreeds(){
     // Empties the options from the Select element
     breedSelect.options.length = 1;
     // Iterates over the options defined in the array above to add dog breeds
+    for(let i=0; i<dogBreedOptions.length; i++) {
+        breedSelect.options[breedSelect.options.length] = new Option(dogBreedOptions[i].name, dogBreedOptions[i].value, false, false);
+    }
+}
+
+function allBreeds(){
+    var breedSelect = document.getElementById("breed");
+    breedSelect.options.length = 1;
+    for(let i=0; i<catBreedOptions.length; i++) {
+        breedSelect.options[breedSelect.options.length] = new Option(catBreedOptions[i].name, catBreedOptions[i].value, false, false);
+    }
     for(let i=0; i<dogBreedOptions.length; i++) {
         breedSelect.options[breedSelect.options.length] = new Option(dogBreedOptions[i].name, dogBreedOptions[i].value, false, false);
     }
