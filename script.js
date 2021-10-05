@@ -48,6 +48,39 @@ function submitForm() {
     search();
 }
 
+var catBreedOptions = [
+    {name: "Domestic Short Hair", value: "short"},
+    {name: "Domestic Medium Hair", value: "medium"},
+    {name: "Domestic Long Hair", value: "long"},
+    {name: "Tabby", value: "tabby"}
+]
+
+function catBreeds(){
+    // Gets the Select element for the breed drop-down
+    var breedSelect = document.getElementById("breed");
+    // Empties the options from the Select element
+    breedSelect.options.length = 1;
+    // Iterates over the options defined in the array above to add cat breeds
+    for(let i=0; i<catBreedOptions.length; i++) {
+        breedSelect.options[breedSelect.options.length] = new Option(catBreedOptions[i].name, catBreedOptions[i].value, false, false);
+    }
+}
+
+var dogBreedOptions = [
+    {name: "Labrador Retriever", value: "labrador"}
+]
+
+function dogBreeds(){
+    // Gets the Select element for the breed drop-down
+    var breedSelect = document.getElementById("breed");
+    // Empties the options from the Select element
+    breedSelect.options.length = 1;
+    // Iterates over the options defined in the array above to add dog breeds
+    for(let i=0; i<dogBreedOptions.length; i++) {
+        breedSelect.options[breedSelect.options.length] = new Option(dogBreedOptions[i].name, dogBreedOptions[i].value, false, false);
+    }
+}
+
 function search() {
     fetch('https://api.rescuegroups.org/http/v2.json', {
     method: 'POST',
