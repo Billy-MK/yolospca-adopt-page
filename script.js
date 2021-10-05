@@ -52,7 +52,7 @@ function search() {
     fetch('https://api.rescuegroups.org/http/v2.json', {
     method: 'POST',
     body: JSON.stringify({
-        "apikey" : 'bos596JH',
+        "apikey" : '',
             "objectType" : "animals",
             "objectAction" : "publicSearch",
             "search" : {

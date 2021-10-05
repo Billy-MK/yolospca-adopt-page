@@ -31,14 +31,21 @@
                     <option value="adult">Adult</option>
                     <option value="senior">Senior</option>
                 </select>
-                <label for="breed">Breed</label>
-                <select name="breed" id="breed" onChange="submitForm()">
-                    <option value="">Any Breed</option>
-                    <option value="short">Domestic Short Hair</option>
-                    <option value="medium">Domestic Medium Hair</option>
-                    <option value="long">Domestic Long Hair</option>
-                    <option value="tabby">Tabby</option>
-                </select>
+                <div id="breedContainer">
+                    <label for="breed">Breed</label>
+                    <select name="breed" id="breed" onChange="submitForm()">
+                        <option value="">Any Breed</option>
+                        <div id="cat-species">
+                            <option value="short">Domestic Short Hair</option>
+                            <option value="medium">Domestic Medium Hair</option>
+                            <option value="long">Domestic Long Hair</option>
+                            <option value="tabby">Tabby</option>
+                        </div>
+                        <div id="dog-species">
+                            <option value="lab">Lab</option>
+                        </div>
+                    </select>
+                </div>
                 <br>
                 <input type="submit" value="Submit" onClick="submitForm()">
             </form>
