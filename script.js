@@ -13,7 +13,7 @@ var filters = [
 ]
 
 // Gets the breed select element, defined as a global variable to work across multiple functions
-var breedSelect = document.getElementById("breed");
+var breedSelectElement = document.getElementById("breed");
 
 // These are all the cat breeds options, where "name" shows in the dropdown and value is the search term sent to the rescuegroups API.
 var catBreedOptions = [
@@ -41,11 +41,11 @@ function submitForm() {
         // This conditional shows/hides dog or cat breeds in the breed selection dropdown.
         if (species === "cat") {
             clearBreeds();
-            catBreeds(breed);
+            populateBreeds(catBreedOptions, breed)
         }
         if (species === "dog") {
             clearBreeds();
-            dogBreeds(breed);
+            populateBreeds(dogBreedOptions, breed)
         }
         filters.push({
             "fieldName" : "animalSpecies",
@@ -91,24 +91,15 @@ function submitForm() {
 
 // Clears all breeds from dropdown except "any breed"
 function clearBreeds() {
-    breedSelect.options.length = 1;
+    breedSelectElement.options.length = 1;
 }
 
-// Iterates over the options defined in the cat breeds array to add cat breeds
-function catBreeds(selectedBreed){
-    for(let i=0; i<catBreedOptions.length; i++) {
+// Iterates over the options defined in the breeds array to add breeds
+function populateBreeds(breeds, selectedBreed){
+    for(let i=0; i<breeds.length; i++) {
         let isSelected;
-        selectedBreed === catBreedOptions[i].value ? isSelected = true : isSelected = false;
-        breedSelect.options[breedSelect.options.length] = new Option(catBreedOptions[i].name, catBreedOptions[i].value, false, isSelected);
-    }
-}
-
-// Iterates over the options defined in the dog breeds array to add dog breeds
-function dogBreeds(selectedBreed){
-    for(let i=0; i<dogBreedOptions.length; i++) {
-        let isSelected;
-        selectedBreed === dogBreedOptions[i].value ? isSelected = true : isSelected = false;
-        breedSelect.options[breedSelect.options.length] = new Option(dogBreedOptions[i].name, dogBreedOptions[i].value, false, isSelected);
+        selectedBreed === breeds[i].value ? isSelected = true : isSelected = false;
+        breedSelectElement.options[breedSelectElement.options.length] = new Option(breeds[i].name, breeds[i].value, false, isSelected);
     }
 }
 
