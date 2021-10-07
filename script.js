@@ -146,5 +146,6 @@ function search() {
   });
 }
 
-// One search with default parameters is run to populate the page with results
+// One search with default parameters is run to populate the page with results, and the breed drop-down is populated with all breed possibilities.
 search();
+allBreeds();
