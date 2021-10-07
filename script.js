@@ -1,4 +1,4 @@
-// Filters for the rescuegroups API search, animalOrgID 1742 referring to the YoloSPCA and animalStatus ensuring that only "available" animals are listed.
+// Default filters for the rescuegroups API search, animalOrgID 1742 referring to the YoloSPCA and animalStatus ensuring that only "available" animals are listed.
 var filters = [
     {
         "fieldName" : "animalOrgID",
@@ -16,12 +16,7 @@ var filters = [
 var breedSelectElement = document.getElementById("breed");
 
 // These are all the cat breeds options, where "name" shows in the dropdown and value is the search term sent to the rescuegroups API.
-var catBreedOptions = [
-    {name: "Domestic Short Hair", value: "short"},
-    {name: "Domestic Medium Hair", value: "medium"},
-    {name: "Domestic Long Hair", value: "long"},
-    {name: "Tabby", value: "tabby"}
-]
+var catBreedOptions = [{name:"Domestic Short Hair",value:"short"},{name:"Domestic Medium Hair",value:"medium"},{name:"Domestic Long Hair",value:"long"},{name:"Tabby",value:"tabby"}]
 
 // These are all the dog breeds options, where "name" shows in the dropdown and value is the search term sent to the rescuegroups API.
 var dogBreedOptions = [{name: "Akita", value: "Akita"},{name:"American Pit Bull Terrier",value:"American Pit Bull Terrier"},{name:"Australian Cattle Dog",value:"Australian Cattle Dog"},{name:"Basset Hound",value:"Basset Hound"},{name:"Bichon Frise",value:"Bichon Frise"},{name:"Border Collie",value:"Border Collie"},{name:"Border Terrier",value:"Border Terrier"},{name:"Boston Terrier",value:"Boston Terrier"},{name:"Boxer",value:"Boxer"},{name:"Bulldog",value:"Bulldog"},{name:"Bull Terrier",value:"Bull Terrier"},
@@ -105,8 +100,8 @@ function populateBreeds(breeds, selectedBreed){
 
 function allBreeds(selectedBreed){
     clearBreeds();
-    catBreeds(selectedBreed);
-    dogBreeds(selectedBreed);
+    populateBreeds(catBreedOptions, selectedBreed);
+    populateBreeds(dogBreedOptions, selectedBreed);
 }
 
 // Search function for rescuegroups API based on filters defined by form input
@@ -135,6 +130,7 @@ function search() {
       }
       document.getElementById("results").textContent = JSON.stringify(data.data)
       document.getElementById("filters").textContent = JSON.stringify(filters)
+      // Filters are reset after a call is made
       filters = [
         {
             "fieldName" : "animalOrgID",
