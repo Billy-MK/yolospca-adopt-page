@@ -11,25 +11,25 @@
 <body>
     <div class="container">
         <form id="form" class="row">
-            <div class="col">
-                <label class="form-label visually-hidden" for="species">Species</label>
-                <select class="form-select" name="species" id="species" onChange="submitForm()">
+            <div class="col form-box">
+                <label class="form-label" for="species">SPECIES</label>
+                <select class="form-select form-select-sm" name="species" id="species" onChange="submitForm()">
                     <option value="">Any Species</option>
                     <option value="cat">Cat</option>
                     <option value="dog">Dog</option>
                 </select>
             </div>
-            <div class="col">
-                <label class="form-label visually-hidden" for="sex">Sex</label>
-                <select class="form-select" name="sex" id="sex" onChange="submitForm()">
+            <div class="col form-box">
+                <label class="form-label" for="sex">SEX</label>
+                <select class="form-select form-select-sm" name="sex" id="sex" onChange="submitForm()">
                     <option value="">Any Sex</option>
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                 </select>
             </div>
-            <div class="col">
-                <label class="form-label visually-hidden" for="age">Age</label>
-                <select class="form-select" name="age" id="age" onChange="submitForm()">
+            <div class="col form-box">
+                <label class="form-label" for="age">AGE</label>
+                <select class="form-select form-select-sm" name="age" id="age" onChange="submitForm()">
                     <option value="">Any Age</option>
                     <option value="baby">Baby</option>
                     <option value="young">Young</option>
@@ -37,14 +37,13 @@
                     <option value="senior">Senior</option>
                 </select>
             </div>
-            <div class="col">
-                <label class="form-label visually-hidden" for="breed">Breed</label>
-                <select class="form-select" name="breed" id="breed" onChange="submitForm()">
+            <div class="col form-box">
+                <label class="form-label" for="breed">BREED</label>
+                <select class="form-select form-select-sm" name="breed" id="breed" onChange="submitForm()">
                     <option value="">Any Breed</option>
                 </select>
             </div>
             <br>
-            <input type="submit" value="Submit" onClick="submitForm()">
         </form>
             <p id="results"></p>
             <p id="filters"></p>
