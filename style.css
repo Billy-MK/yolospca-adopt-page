@@ -3,5 +3,6 @@
 }
 
 .container {
-    margin: auto;
+    width: 500px;
+    margin: 0px;
 }
