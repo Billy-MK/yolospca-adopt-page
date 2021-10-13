@@ -125,9 +125,8 @@ function search() {
 })
   .then(response => response.json())
   .then(data => {
-      console.log(data.data)
+    document.getElementById("results").innerHTML = "";
       for (const key in data.data) {
-          console.log(data.data[key])
           let cardHTML = `
             <div class="card">
                 <img alt="" class="card-img-top profilePicture" src="${data.data[key].animalPictures[0].urlSecureFullsize}" />
