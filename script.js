@@ -114,7 +114,7 @@ function search() {
             "objectAction" : "publicSearch",
             "search" : {
                 "resultStart" : 0,
-                "resultLimit" : 15,
+                "resultLimit" : 8,
                 "resultSort" : "animalID",
                 "resultOrder" : "asc",
                 "calcFoundRows" : "Yes",
@@ -140,7 +140,7 @@ function search() {
             </div>
           `
           let div = document.createElement("div");
-          div.classList.add("col-md-6") 
+          div.classList.add("col-md-3") 
           div.innerHTML = cardHTML
           document.getElementById("results").appendChild(div);
       }
