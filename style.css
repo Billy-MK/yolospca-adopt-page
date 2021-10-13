@@ -23,3 +23,26 @@
 body {
     width: 500px;
 }
+
+.card {
+    border-radius: 2% 2%;
+    margin: 1%;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    text-align: center;
+}
+
+.profilePicture {
+    object-fit: cover;
+    border-radius: 60% 60%;
+    position: relative;
+    height:150px;
+    width:150px;
+    top: 20px;
+    left: 50%;
+    max-width: 180px;
+    margin-bottom: 20px;
+    box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(255, 255, 255, 1);
+    -webkit-transform: translate(-50%, 0%);
+    transform: translate(-50%, 0%);
+}

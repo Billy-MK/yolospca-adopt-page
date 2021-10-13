@@ -130,7 +130,7 @@ function search() {
           console.log(data.data[key])
           let cardHTML = `
             <div class="card">
-                <img alt="" class="card-img-top" src="${data.data[key].animalPictures[0].urlSecureFullsize}" />
+                <img alt="" class="card-img-top profilePicture" src="${data.data[key].animalPictures[0].urlSecureFullsize}" />
                 <div class="card-body">
                     <h5 class="card-title">${data.data[key].animalName}</h5>
                 </div>
