@@ -140,7 +140,9 @@ function search() {
                 </ul>
             </div>
           `
-          document.getElementById("results").innerHTML = cardHTML
+          let div = document.createElement("div");
+          div.innerHTML = cardHTML
+          document.getElementById("results").appendChild(div);
       }
       if (data.data.length < 1) {
         document.getElementById("results").innerHTML = "none"
