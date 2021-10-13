@@ -119,7 +119,7 @@ function search() {
                 "resultOrder" : "asc",
                 "calcFoundRows" : "Yes",
                 "filters" : filters,
-                "fields": ["animalName", "animalSex"]
+                "fields": ["animalName", "animalSex", "animalBreed", "animalGeneralAge"]
             }
     })
 })
@@ -135,13 +135,16 @@ function search() {
                     <h5 class="card-title">${data.data[key].animalName}</h5>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item"></li>
-                    <li class="list-group-item"></li>
+                    <li class="list-group-item">${data.data[key].animalGeneralAge} ${data.data[key].animalSex}</li>
+                    <li class="list-group-item">${data.data[key].animalBreed}</li>
                 </ul>
             </div>
           `
           document.getElementById("results").innerHTML = cardHTML
       }
+      if (data.data.length < 1) {
+        document.getElementById("results").innerHTML = "none"
+        }
       // Filters are reset after a call is made
       filters = [
         {
