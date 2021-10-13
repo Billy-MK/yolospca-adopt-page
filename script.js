@@ -141,6 +141,7 @@ function search() {
             </div>
           `
           let div = document.createElement("div");
+          div.classList.add("col-md-6") 
           div.innerHTML = cardHTML
           document.getElementById("results").appendChild(div);
       }
