@@ -7,10 +7,6 @@
     margin: 0px;
 }
 
-.form-select {
-    /* font-size:small; */
-}
-
 .form-label {
     font-weight: 500;
 }
@@ -18,4 +14,12 @@
 .form-box {
     text-align: center;
     margin-top: 5px;
+}
+
+.row {
+   width: 500px;
+}
+
+body {
+    width: 500px;
 }

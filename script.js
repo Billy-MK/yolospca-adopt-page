@@ -125,11 +125,23 @@ function search() {
 })
   .then(response => response.json())
   .then(data => {
+      console.log(data.data)
       for (const key in data.data) {
           console.log(data.data[key])
+          let cardHTML = `
+            <div class="card">
+                <img alt="" class="card-img-top" src="" />
+                <div class="card-body">
+                    <h5 class="card-title">${data.data[key].animalName}</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"></li>
+                    <li class="list-group-item"></li>
+                </ul>
+            </div>
+          `
+          document.getElementById("results").innerHTML = cardHTML
       }
-      document.getElementById("results").textContent = JSON.stringify(data.data)
-      document.getElementById("filters").textContent = JSON.stringify(filters)
       // Filters are reset after a call is made
       filters = [
         {
