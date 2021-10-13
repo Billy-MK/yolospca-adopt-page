@@ -54,8 +54,8 @@ border-radius: 10px;
     object-fit: cover;
     border-radius: 60% 60%;
     position: relative;
-    height:150px;
-    width:150px;
+    height:180px;
+    width:180px;
     top: 20px;
     left: 50%;
     max-width: 180px;
@@ -68,4 +68,8 @@ border-radius: 10px;
 
 label { 
     color: #d91a32;
+}
+
+.list-group-item {
+    
 }

@@ -109,7 +109,7 @@ function search() {
     fetch('https://api.rescuegroups.org/http/v2.json', {
     method: 'POST',
     body: JSON.stringify({
-        "apikey" : '',
+        "apikey" : 'bos596JH',
             "objectType" : "animals",
             "objectAction" : "publicSearch",
             "search" : {
@@ -135,7 +135,7 @@ function search() {
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">${data.data[key].animalGeneralAge} ${data.data[key].animalSex}</li>
-                    <li class="list-group-item">${data.data[key].animalBreed}</li>
+                    <li class="list-group-item">${data.data[key].animalBreed.replace('(short coat)', '').replace('(medium coat)', '').replace('(long coat)', '')}</li>
                 </ul>
             </div>
           `
