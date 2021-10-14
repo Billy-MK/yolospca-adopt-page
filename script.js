@@ -81,7 +81,7 @@ function submitForm() {
         
     };
     // Executes the actual rescuegroups API search after filters are set
-    search();
+    search(0);
 }
 
 // Clears all breeds from dropdown except "any breed"
@@ -105,15 +105,15 @@ function allBreeds(selectedBreed){
 }
 
 // Search function for rescuegroups API based on filters defined by form input
-function search() {
+function search(page) {
     fetch('https://api.rescuegroups.org/http/v2.json', {
     method: 'POST',
     body: JSON.stringify({
-        "apikey" : 'bos596JH',
+        "apikey" : '',
             "objectType" : "animals",
             "objectAction" : "publicSearch",
             "search" : {
-                "resultStart" : 0,
+                "resultStart" : page * 8,
                 "resultLimit" : 8,
                 "resultSort" : "animalID",
                 "resultOrder" : "asc",
@@ -164,5 +164,5 @@ function search() {
 }
 
 // One search with default parameters is run to populate the page with results, and the breed drop-down is populated with all breed possibilities.
-search();
+search(3);
 allBreeds();
