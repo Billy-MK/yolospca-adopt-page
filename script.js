@@ -58,7 +58,7 @@ function submitForm() {
             "fieldName" : "animalSex",
             "operation" : "equals",
             "criteria" : sex
-        })
+            })
     };
     
     // Age filter
@@ -164,5 +164,5 @@ function search(page) {
 }
 
 // One search with default parameters is run to populate the page with results, and the breed drop-down is populated with all breed possibilities.
-search(3);
+search(0);
 allBreeds();
