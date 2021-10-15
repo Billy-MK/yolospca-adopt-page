@@ -75,7 +75,9 @@ label {
 }
 
 .custom-pagination {
-    font-size: 13px; }
+    
+    font-size: 13px; 
+}
     
 .custom-pagination .page-item .page-link {
     color: #000;
