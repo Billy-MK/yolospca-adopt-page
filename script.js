@@ -28,10 +28,36 @@ var dogBreedOptions = [{name: "Akita", value: "Akita"},{name:"American Pit Bull 
 {name:"Miniature Pinscher",value:"Miniature Pinscher"},{name:"Newfoundland",value:"Newfoundland"},{name:"Norfolk Terrier",value:"Norfolk Terrier"},{name:"Papillon",value:"Papillon"},{name:"Pekingese",value:"Pekingese"},{name:"Pointer",value:"Pointer"},{name:"Pomeranian",value:"Pomeranian"},{name:"Poodle",value:"Poodle"},{name:"Pug",value:"Pug"},{name:"Rat Terrier",value:"Rat Terrier"},{name:"Rhodesian Ridgeback",value:"Rhodesian Ridgeback"},{name:"Rottweiler",value:"Rottweiler"},{name:"Saint Bernard",
 value:"Saint Bernard"},{name:"Shiba Inu",value:"Shiba Inu"},{name:"Shih Tzu",value:"Shih Tzu"},{name:"Toy Fox Terrier",value:"Toy Fox Terrier"},{name:"Weimaraner",value:"Weimaraner"}];
 
-// Function run whenever a drop-down selection is made. This adds filters to the filters array above, which will be sent to the rescuegroups API in the Search() function. 
+// Function run whenever a drop-down selection is made, sets page to zero and runs the search function from page 0
 function submitForm() {
     event.preventDefault();
     page = 0;
+    // Executes the actual rescuegroups API search after filters are set
+    search(0);
+}
+
+// Clears all breeds from dropdown except "any breed"
+function clearBreeds() {
+    breedSelectElement.options.length = 1;
+}
+
+// Iterates over the options defined in the breeds array to add breeds
+function populateBreeds(breeds, selectedBreed){
+    for(let i=0; i<breeds.length; i++) {
+        let isSelected;
+        selectedBreed === breeds[i].value ? isSelected = true : isSelected = false;
+        breedSelectElement.options[breedSelectElement.options.length] = new Option(breeds[i].name, breeds[i].value, false, isSelected);
+    }
+}
+
+function allBreeds(selectedBreed){
+    clearBreeds();
+    populateBreeds(catBreedOptions, selectedBreed);
+    populateBreeds(dogBreedOptions, selectedBreed);
+}
+
+// Search function for rescuegroups API based on filters defined by form input
+function search(page) {
     let species = document.getElementById("species").value;
     let sex = document.getElementById("sex").value;
     let age = document.getElementById("age").value;
@@ -81,39 +107,11 @@ function submitForm() {
             "operation" : "contains",
             "criteria" : breed
         })
-    } else {
-        
-    };
-    // Executes the actual rescuegroups API search after filters are set
-    search(0);
-}
-
-// Clears all breeds from dropdown except "any breed"
-function clearBreeds() {
-    breedSelectElement.options.length = 1;
-}
-
-// Iterates over the options defined in the breeds array to add breeds
-function populateBreeds(breeds, selectedBreed){
-    for(let i=0; i<breeds.length; i++) {
-        let isSelected;
-        selectedBreed === breeds[i].value ? isSelected = true : isSelected = false;
-        breedSelectElement.options[breedSelectElement.options.length] = new Option(breeds[i].name, breeds[i].value, false, isSelected);
     }
-}
-
-function allBreeds(selectedBreed){
-    clearBreeds();
-    populateBreeds(catBreedOptions, selectedBreed);
-    populateBreeds(dogBreedOptions, selectedBreed);
-}
-
-// Search function for rescuegroups API based on filters defined by form input
-function search(page) {
     fetch('https://api.rescuegroups.org/http/v2.json', {
     method: 'POST',
     body: JSON.stringify({
-        "apikey" : '',
+        "apikey" : 'bos596JH',
             "objectType" : "animals",
             "objectAction" : "publicSearch",
             "search" : {
@@ -129,6 +127,9 @@ function search(page) {
 })
   .then(response => response.json())
   .then(data => {
+    // First, the number of responses is compared to the current page number to manage pagination.
+    let maxPages = Math.ceil((data.foundRows / 8));
+    console.log(maxPages)
     document.getElementById("results").innerHTML = "";
       for (const key in data.data) {
           let cardHTML = `
@@ -151,8 +152,7 @@ function search(page) {
       if (data.data.length < 1) {
         document.getElementById("results").innerHTML = "none"
         }
-      // Filters are reset after a call is made
-      filters = [
+    filters = [
         {
             "fieldName" : "animalOrgID",
             "operation" : "equals",
@@ -168,6 +168,7 @@ function search(page) {
 }
 
 function changePage(targetPage) {
+    event.preventDefault;
     if (targetPage === "next") {
         page += 1
     } 
@@ -177,8 +178,8 @@ function changePage(targetPage) {
     if (typeof(targetPage) === "number") {
         page = targetPage
     }
-    console.log(page)
     search(page)
+    document.getElementById('current-page').innerHTML = (page + 1)
 }
 
 // One search with default parameters is run to populate the page with results, and the breed drop-down is populated with all breed possibilities.
