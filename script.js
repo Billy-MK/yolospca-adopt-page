@@ -174,9 +174,11 @@ function changePage(targetPage) {
     if (targetPage === "previous") {
         page -= 1
     } 
-    if (typeof(targetPage === "number")) {
+    if (typeof(targetPage) === "number") {
         page = targetPage
     }
+    console.log(page)
+    search(page)
 }
 
 // One search with default parameters is run to populate the page with results, and the breed drop-down is populated with all breed possibilities.
