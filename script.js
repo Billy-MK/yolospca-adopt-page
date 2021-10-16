@@ -12,6 +12,9 @@ var filters = [
     }
 ]
 
+// Search results default page
+var page = 0;
+
 // Gets the breed select element, defined as a global variable to work across multiple functions
 var breedSelectElement = document.getElementById("breed");
 
@@ -28,6 +31,7 @@ value:"Saint Bernard"},{name:"Shiba Inu",value:"Shiba Inu"},{name:"Shih Tzu",val
 // Function run whenever a drop-down selection is made. This adds filters to the filters array above, which will be sent to the rescuegroups API in the Search() function. 
 function submitForm() {
     event.preventDefault();
+    page = 0;
     let species = document.getElementById("species").value;
     let sex = document.getElementById("sex").value;
     let age = document.getElementById("age").value;
@@ -161,6 +165,18 @@ function search(page) {
         }
     ]
   });
+}
+
+function changePage(targetPage) {
+    if (targetPage === "next") {
+        page += 1
+    } 
+    if (targetPage === "previous") {
+        page -= 1
+    } 
+    if (typeof(targetPage === "number")) {
+        page = targetPage
+    }
 }
 
 // One search with default parameters is run to populate the page with results, and the breed drop-down is populated with all breed possibilities.
