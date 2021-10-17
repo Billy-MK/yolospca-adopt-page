@@ -75,17 +75,16 @@ label {
 }
 
 .custom-pagination {
-    
-    font-size: 13px; 
+    font-size: 17px; 
 }
     
 .custom-pagination .page-item .page-link {
     color: #000;
     border: none;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
     padding: 0;
     margin: 0 2px;
     text-align: center; 

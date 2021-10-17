@@ -49,17 +49,18 @@
             </div>
         <ul class="custom-pagination pagination-primary pagination justify-content-center mt-2">
             <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous" onClick="changePage(`previous`)">
+                <button class="page-link" href="#" aria-label="Previous" id="previous-button" onClick="changePage(`previous`)">
                     <span aria-hidden="true">«</span>
-                </a>            
+                </button>            
             </li>
             <li class="page-item active">
                 <a class="page-link" id="current-page" href="#">1</a>
             </li>
+            <div id="next-page"></div>
             <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next" onClick="changePage(`next`)">
+                <button class="page-link" aria-label="Next" id="next-button" onClick="changePage(`next`)">
                     <span aria-hidden="true">»</span>
-                </a>
+                </button>
             </li>
         </ul>
     </div>

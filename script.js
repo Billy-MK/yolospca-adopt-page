@@ -58,6 +58,9 @@ function allBreeds(selectedBreed){
 
 // Search function for rescuegroups API based on filters defined by form input
 function search(page) {
+    if (page < 0) {
+        page = 0;
+    }
     let species = document.getElementById("species").value;
     let sex = document.getElementById("sex").value;
     let age = document.getElementById("age").value;
@@ -108,10 +111,11 @@ function search(page) {
             "criteria" : breed
         })
     }
+    // The actual rescuegroups API fetch request
     fetch('https://api.rescuegroups.org/http/v2.json', {
     method: 'POST',
     body: JSON.stringify({
-        "apikey" : 'bos596JH',
+        "apikey" : '',
             "objectType" : "animals",
             "objectAction" : "publicSearch",
             "search" : {
@@ -127,9 +131,10 @@ function search(page) {
 })
   .then(response => response.json())
   .then(data => {
-    // First, the number of responses is compared to the current page number to manage pagination.
     let maxPages = Math.ceil((data.foundRows / 8));
-    console.log(maxPages)
+    document.getElementById('current-page').innerHTML = (page+1) + "/" + maxPages
+    document.getElementById('previous-button').disabled = page === 0 ? true:false
+    document.getElementById('next-button').disabled = ((page+1)/maxPages) === 1 ? true:false
     document.getElementById("results").innerHTML = "";
       for (const key in data.data) {
           let cardHTML = `
@@ -174,12 +179,8 @@ function changePage(targetPage) {
     } 
     if (targetPage === "previous") {
         page -= 1
-    } 
-    if (typeof(targetPage) === "number") {
-        page = targetPage
     }
     search(page)
-    document.getElementById('current-page').innerHTML = (page + 1)
 }
 
 // One search with default parameters is run to populate the page with results, and the breed drop-down is populated with all breed possibilities.
