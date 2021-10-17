@@ -140,7 +140,7 @@ function search(page) {
           let cardHTML = `
             <div class="card">
                 <img alt="" class="card-img-top profilePicture" src="${data.data[key].animalPictures[0].urlSecureFullsize}" />
-                <div class="card-body">
+                <div class="card-body d-flex align-items-center justify-content-center">
                     <h5 class="card-title">${data.data[key].animalName}</h5>
                 </div>
                 <ul class="list-group list-group-flush">

@@ -50,11 +50,21 @@ border-radius: 10px;
     margin-top: 10%;
 }
 
+.card-body {
+    height: 5rem;
+}
+
+.card-title {
+    padding-top: 1rem;
+}
+
 .profilePicture {
     object-fit: cover;
     border-radius: 60% 60%;
     position: relative;
     height:180px;
+    max-height: 100%;
+    max-width: 50%;
     width:180px;
     top: 20px;
     left: 50%;
@@ -110,6 +120,10 @@ label {
     color: #fff;
     -webkit-box-shadow: 0 2px 5px 0 rgba(243, 69, 115, 0.2);
     box-shadow: 0 2px 5px 0 rgba(243, 69, 115, 0.2); 
+}
+
+.arrow {
+    font-size: 25px;
 }
   
 .bg-image {
