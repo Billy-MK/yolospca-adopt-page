@@ -132,7 +132,11 @@ function search(page) {
   .then(response => response.json())
   .then(data => {
     let maxPages = Math.ceil((data.foundRows / 8));
-    document.getElementById('current-page').innerHTML = (page+1) + "/" + maxPages
+    if (maxPages === 0) {
+        document.getElementById('pagination-controls').style.visibility = "hidden"
+    } else {
+        document.getElementById('current-page').innerHTML = (page+1) + "/" + maxPages
+    }
     document.getElementById('previous-button').disabled = page === 0 ? true:false
     document.getElementById('next-button').disabled = ((page+1)/maxPages) === 1 ? true:false
     document.getElementById("results").innerHTML = "";
