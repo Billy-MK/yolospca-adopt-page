@@ -174,6 +174,8 @@ function search(page) {
 
 function changePage(targetPage) {
     event.preventDefault;
+    document.getElementById('next-button').disabled = true
+    document.getElementById('previous-button').disabled = true
     if (targetPage === "next") {
         page += 1
     } 
