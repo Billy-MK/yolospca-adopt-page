@@ -10,6 +10,7 @@ var animalSex;
 var animalBreed;
 var animalGeneralAge;
 var animalPictures;
+var animalDescription;
 
 fetch('https://api.rescuegroups.org/http/v2.json', {
     method: 'POST',
@@ -28,7 +29,7 @@ fetch('https://api.rescuegroups.org/http/v2.json', {
                     "operation" : "equals",
                     "criteria" : animalID
                 }],
-                "fields": ["animalName", "animalSex", "animalBreed", "animalGeneralAge", "animalPictures"]
+                "fields": ["animalName", "animalSex", "animalBreed", "animalGeneralAge", "animalPictures", "animalDescription"]
             }
     })
 })
@@ -40,4 +41,6 @@ fetch('https://api.rescuegroups.org/http/v2.json', {
     animalBreed = data.data[animalID].animalBreed;
     animalGeneralAge = data.data[animalID].animalGeneralAge;
     animalPictures = data.data[animalID].animalPictures;
+    animalDescription = data.data[animalID].animalDescription;
+    document.getElementById('animal-description').innerHTML = animalDescription
   })
