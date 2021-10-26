@@ -42,5 +42,10 @@ fetch('https://api.rescuegroups.org/http/v2.json', {
     animalGeneralAge = data.data[animalID].animalGeneralAge;
     animalPictures = data.data[animalID].animalPictures;
     animalDescription = data.data[animalID].animalDescription;
+    document.getElementById('animal-name').innerHTML = animalName
+    document.getElementById('animal-sex').innerHTML = animalSex
+    document.getElementById('animal-breed').innerHTML = animalBreed
+    document.getElementById('animal-age').innerHTML = animalGeneralAge
+    document.getElementById('animal-pictures').innerHTML = `<img src="${animalPictures[0].urlSecureFullsize}"></img>`
     document.getElementById('animal-description').innerHTML = animalDescription
   })
