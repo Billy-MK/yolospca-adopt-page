@@ -127,3 +127,8 @@ height: 80vh;
 background-size: cover;
 background-position: center center; }
   
+
+#no-results{
+    text-align: center;
+    margin-top: 5%;
+}

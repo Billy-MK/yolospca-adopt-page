@@ -114,7 +114,7 @@ function search(page) {
             "criteria" : breed
         })
     }
-    
+
     // The actual rescuegroups API fetch request
     fetch('https://api.rescuegroups.org/http/v2.json', {
     method: 'POST',
@@ -163,7 +163,7 @@ function search(page) {
           document.getElementById("results").appendChild(div);
       }
       if (data.data.length < 1) {
-        document.getElementById("results").innerHTML = "none"
+        document.getElementById("results").innerHTML = `<p id="no-results" class="lead">No adoptable pets found! Try expanding your search, or click <a onClick=newSearch() href="#">here</a> to view all animals.</p>`
         }
     filters = [
         {
@@ -178,6 +178,15 @@ function search(page) {
         }
     ]
   });
+}
+
+// Resets all values and executes a new search
+function newSearch() {
+    document.getElementById("species").value = ""
+    document.getElementById("sex").value = ""
+    document.getElementById("age").value = ""
+    document.getElementById("breed").value = ""
+    search(0);
 }
 
 function changePage(targetPage) {
