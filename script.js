@@ -58,7 +58,6 @@ function allBreeds(selectedBreed){
 
 // Search function for rescuegroups API based on filters defined by form input
 function search(page) {
-    console.log("Beginning of function:" + JSON.stringify(filters))
     if (page < 0) {
         page = 0;
     }
@@ -115,12 +114,12 @@ function search(page) {
             "criteria" : breed
         })
     }
-    console.log("Before fetch:" + JSON.stringify(filters))
+    
     // The actual rescuegroups API fetch request
     fetch('https://api.rescuegroups.org/http/v2.json', {
     method: 'POST',
     body: JSON.stringify({
-        "apikey" : '',
+        "apikey" : 'bos596JH',
             "objectType" : "animals",
             "objectAction" : "publicSearch",
             "search" : {
@@ -150,7 +149,7 @@ function search(page) {
             <div class="card">
                 <img alt="" class="card-img-top profilePicture" src="${data.data[key].animalPictures[0].urlSecureFullsize}" />
                 <div class="card-body d-flex align-items-center justify-content-center">
-                    <h5 class="card-title"><a href="./animals/?id=${data.data[key].animalID}">${data.data[key].animalName}<a></h5>
+                    <h5 class="card-title">${data.data[key].animalName}</h5>
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">${data.data[key].animalGeneralAge} ${data.data[key].animalSex}</li>
@@ -197,3 +196,5 @@ function changePage(targetPage) {
 // One search with default parameters is run to populate the page with results, and the breed drop-down is populated with all breed possibilities.
 search(0);
 allBreeds();
+
+// a href="./animals/?id=${data.data[key].animalID}"
