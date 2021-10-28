@@ -149,7 +149,7 @@ function search(page) {
             <div class="card">
                 <img alt="" class="card-img-top profilePicture" src="${data.data[key].animalPictures[0].urlSecureFullsize}" />
                 <div class="card-body d-flex align-items-center justify-content-center">
-                    <h5 class="card-title">${data.data[key].animalName}</h5>
+                    <h5 class="card-title"><a href="./animals/?id=${data.data[key].animalID}">${data.data[key].animalName}</a></h5>
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">${data.data[key].animalGeneralAge} ${data.data[key].animalSex}</li>
@@ -158,7 +158,7 @@ function search(page) {
             </div>
           `
           let div = document.createElement("div");
-          div.classList.add("col-md-3") 
+          div.classList.add("col-lg-3") 
           div.innerHTML = cardHTML
           document.getElementById("results").appendChild(div);
       }
@@ -206,4 +206,3 @@ function changePage(targetPage) {
 search(0);
 allBreeds();
 
-// a href="./animals/?id=${data.data[key].animalID}"
