@@ -3,8 +3,24 @@
     /* height: 600px; */
     /* max-height: 600px; */
     object-fit: contain;
-    background-color: #a81529b4;
     aspect-ratio: 1/1;
-    border-radius: 10%;
-    padding: 10px;
+    margin-top: 2%;
+}
+
+#animal-name {
+    position: relative
+}
+
+.container {
+    padding: 2%;
+}
+
+.carousel-indicator {
+    background-color: red
+}
+
+.box { 
+    background-color:rgb(253, 253, 253);
+    border-radius: 2% 2%;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }

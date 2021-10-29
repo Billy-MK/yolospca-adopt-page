@@ -62,6 +62,7 @@ fetch('https://api.rescuegroups.org/http/v2.json', {
         document.getElementById('carousel-items').appendChild(carouselItem)
         //    This loads the appropriate number of slide indicators
         var carouselIndicator = document.createElement('button');
+        carouselIndicator.classList.add('carousel-indicator');
         if (i===0) {
             carouselIndicator.classList.add('active');
         }
