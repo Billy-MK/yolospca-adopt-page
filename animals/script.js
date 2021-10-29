@@ -29,7 +29,7 @@ fetch('https://api.rescuegroups.org/http/v2.json', {
                     "operation" : "equals",
                     "criteria" : animalID
                 }],
-                "fields": ["animalName", "animalSex", "animalBreed", "animalGeneralAge", "animalPictures", "animalDescription"]
+                "fields": ["animalName", "animalSpecies", "animalSex", "animalBreed", "animalGeneralAge", "animalPictures", "animalDescription"]
             }
     })
 })
@@ -42,13 +42,22 @@ fetch('https://api.rescuegroups.org/http/v2.json', {
     animalGeneralAge = data.data[animalID].animalGeneralAge;
     animalPictures = data.data[animalID].animalPictures;
     animalDescription = data.data[animalID].animalDescription;
+    animalSpecies = data.data[animalID].animalSpecies;
     document.getElementById('animal-name').innerHTML = animalName
     document.getElementById('animal-sex').innerHTML = animalSex
     document.getElementById('animal-breed').innerHTML = animalBreed
     document.getElementById('animal-age').innerHTML = animalGeneralAge
     createCarousel(animalPictures);
     document.getElementById('animal-description').innerHTML = animalDescription
+    createAdoptButton(animalSpecies)
   })
+
+  function createAdoptButton(species) {
+      species === "Cat" ? 
+      document.getElementById('adopt-button').innerHTML = `<a href="https://form.jotform.com/52328506444151/" class="btn btn-danger btn-lg" target="_blank" rel="noopener">Click here to submit an application!</a>` 
+      : 
+      document.getElementById('adopt-button').innerHTML = `<a href="https://form.jotform.com/52017002013129/" class="btn btn-danger btn-lg" target="_blank" rel="noopener">Click here to submit an application!</a>`
+  }
 
   function createCarousel(pictures) {
       for (i=0; i<pictures.length; i++) {
