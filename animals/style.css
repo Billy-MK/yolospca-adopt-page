@@ -30,3 +30,11 @@
 body {
     background-color: #f4f1ea;
 }
+
+a{
+    color: #a81529b4
+}
+
+a:hover{
+    color: #fd2b47d8
+}
