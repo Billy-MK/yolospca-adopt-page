@@ -2,6 +2,10 @@
     --primary-color: #d91a32;
 }
 
+.container {
+    margin: none;
+}
+
 .card-title {
     color: #d91a32;
     font-weight: bolder;
