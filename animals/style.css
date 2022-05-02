@@ -17,10 +17,6 @@
     background-color: #f4f1ea;
 }
 
-.carousel-indicator {
-    background-color: red
-}
-
 .box {
     background-color:rgb(253, 253, 253);
     border-radius: 2% 2%;
@@ -37,4 +33,32 @@ a{
 
 a:hover{
     color: #fd2b47d8
+}
+
+.next-button {
+    background-image: url(./icons/next.png);
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: 100% 100%;
+}
+
+.prev-button {
+    background-image: url(./icons/prev.png);
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: 100% 100%;
+}
+
+.carousel-control-prev {
+    opacity: .7;
+}
+
+.carousel-control-next {
+    opacity: .7;
 }
